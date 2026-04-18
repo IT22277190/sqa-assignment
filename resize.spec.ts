@@ -10,7 +10,7 @@ test.describe('Pixels Suite - Resize Automation (Member 1)', () => {
   // Feature 1: Core Navigation
   test('Verify resize tool loads', async ({ page }) => {
     await expect(page).toHaveTitle(/Pixels/i);
-    await page.screenshot({ path: 'screenshots/01_app_load.png' });
+    await page.screenshot({ path: 'screenshots/resize/01_app_load.png' });
   });
 
   // Feature 2: Resize via Dimension Inputs
@@ -35,7 +35,7 @@ test.describe('Pixels Suite - Resize Automation (Member 1)', () => {
     await page.locator('body').click();
 
     await expect(canvas).toHaveAttribute('width', '800');
-    await page.screenshot({ path: 'screenshots/02_resize_inputs.png' });
+    await page.screenshot({ path: 'screenshots/resize/02_resize_inputs.png' });
   });
 
   // Feature 3: Aspect Ratio Lock
@@ -62,6 +62,6 @@ test.describe('Pixels Suite - Resize Automation (Member 1)', () => {
     const newHeight = await heightInput.inputValue();
     expect(newHeight).not.toBe(initialHeight);
 
-    await page.screenshot({ path: 'screenshots/03_aspect_ratio.png' });
+    await page.screenshot({ path: 'screenshots/resize/03_aspect_ratio.png' });
   });
 });

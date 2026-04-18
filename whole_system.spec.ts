@@ -3,6 +3,7 @@ import { test, expect, Page } from '@playwright/test';
 const BASE_URL = 'https://www.pixelssuite.com/';
 
 async function goToCropToWebp(page: Page) {
+  // Route through the home card to keep SPA state initialization consistent.
   await page.goto(BASE_URL);
   await page.getByRole('button', { name: 'To WebP', exact: true }).first().click();
 }
@@ -20,12 +21,17 @@ async function assertSectionLoaded(page: Page, expectedPathFragment: string) {
 }
 
 test.describe('Pixels Suite - Whole System Coverage (Transliteration Excluded)', () => {
+  // ---------------------------------------------------------------------------
+  // Test Case 1 (Chromium):
+  // Functional Test: Crop Tool (Crop -> To WebP)
+  // ---------------------------------------------------------------------------
   test('Functional Test: Crop Tool (Crop -> To WebP)', async ({ page }) => {
     await goToCropToWebp(page);
 
     const fileInput = page.locator('input[type="file"]');
     await fileInput.setInputFiles('test-image.jpg');
 
+    // Crop tool exposes 4 ordered numeric controls: x, y, width, height.
     const cropInputs = page.getByRole('spinbutton');
     const xInput = cropInputs.nth(0);
     const yInput = cropInputs.nth(1);
@@ -38,13 +44,18 @@ test.describe('Pixels Suite - Whole System Coverage (Transliteration Excluded)',
     await heightInput.fill('50');
 
     await expect(page.getByRole('button', { name: 'Download', exact: true })).toBeVisible();
-    await page.screenshot({ path: 'screenshots/04_crop_feature.png' });
+    await page.screenshot({ path: 'screenshots/whole-system/01_crop_feature.png' });
   });
 
+  // ---------------------------------------------------------------------------
+  // Test Case 2 (Chromium):
+  // System-Wide Navigation Smoke Test (excluding Transliteration)
+  // ---------------------------------------------------------------------------
   test('System-Wide Navigation Smoke Test (excluding Transliteration)', async ({ page }) => {
     await page.goto(BASE_URL);
 
     // Intentionally excluding any interaction with Transliteration.
+    // Each step starts from home to avoid state leakage between SPA modules.
     await page.getByRole('button', { name: 'Image → PDF', exact: true }).click();
     await assertSectionLoaded(page, 'document|pdf|converter');
 
@@ -57,6 +68,7 @@ test.describe('Pixels Suite - Whole System Coverage (Transliteration Excluded)',
     await assertSectionLoaded(page, 'compress');
 
     await page.goto(BASE_URL);
+    // Scope to the Image Converter card so we do not click similarly named controls elsewhere.
     await page
       .locator('div')
       .filter({ hasText: /^Image ConverterConvert images to JPG, PNG, or WebP/ })
@@ -64,6 +76,6 @@ test.describe('Pixels Suite - Whole System Coverage (Transliteration Excluded)',
       .click();
     await assertSectionLoaded(page, 'convert|image');
 
-    await page.screenshot({ path: 'screenshots/05_system_navigation.png' });
+    await page.screenshot({ path: 'screenshots/whole-system/02_system_navigation.png' });
   });
 });

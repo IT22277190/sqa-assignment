@@ -24,9 +24,9 @@ Achieve deterministic and repeatable passing execution for all three Resize test
 
 | Test Case ID | Test Case Name | Business Purpose | Core Automation Steps | Assertions | Evidence |
 |---|---|---|---|---|---|
-| TC-01 | Verify resize tool loads | Validate that the SPA shell and Resize module are reachable and ready for interaction | Navigate to home URL, transition state by clicking Resize card/button, verify module readiness | Page title matches Pixels pattern | screenshots/01_app_load.png |
-| TC-02 | Upload image and resize via input fields | Validate functional image resize using explicit width and height controls | Upload test-image.jpg, wait for canvas rendering, disable Keep Aspect when active, update width and height controls | Canvas width attribute updated to expected value | screenshots/02_resize_inputs.png |
-| TC-03 | Verify Keep Aspect Ratio functionality | Validate dependent field recalculation when aspect lock is active | Upload image, ensure Keep Aspect is checked, capture baseline height, update width, trigger re-computation | Height value changes from baseline due to aspect lock logic | screenshots/03_aspect_ratio.png |
+| TC-01 | Verify resize tool loads | Validate that the SPA shell and Resize module are reachable and ready for interaction | Navigate to home URL, transition state by clicking Resize card/button, verify module readiness | Page title matches Pixels pattern | screenshots/resize/01_app_load.png |
+| TC-02 | Upload image and resize via input fields | Validate functional image resize using explicit width and height controls | Upload test-image.jpg, wait for canvas rendering, disable Keep Aspect when active, update width and height controls | Canvas width attribute updated to expected value | screenshots/resize/02_resize_inputs.png |
+| TC-03 | Verify Keep Aspect Ratio functionality | Validate dependent field recalculation when aspect lock is active | Upload image, ensure Keep Aspect is checked, capture baseline height, update width, trigger re-computation | Height value changes from baseline due to aspect lock logic | screenshots/resize/03_aspect_ratio.png |
 
 ## Timeline of Changes and Technical Rationale
 

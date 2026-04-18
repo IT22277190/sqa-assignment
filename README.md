@@ -61,12 +61,20 @@ npx playwright show-report
 ## Screenshots
 
 Screenshots are saved under `screenshots/`, including:
+## Screenshots
 
-- `01_app_load.png`
-- `02_resize_inputs.png`
-- `03_aspect_ratio.png`
-- `04_crop_feature.png`
-- `05_system_navigation.png`
+See [SCREENSHOT_CATALOG.md](SCREENSHOT_CATALOG.md) for a screenshot-by-screenshot description.
+
+Resize suite:
+
+- `screenshots/resize/01_app_load.png`
+- `screenshots/resize/02_resize_inputs.png`
+- `screenshots/resize/03_aspect_ratio.png`
+
+Whole-system suite:
+
+- `screenshots/whole-system/01_crop_feature.png`
+- `screenshots/whole-system/02_system_navigation.png`
 
 ## Important Notes
 
