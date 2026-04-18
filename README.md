@@ -1,41 +1,84 @@
 # Pixels Suite Playwright Assignment
 
-This project contains a simple Playwright end-to-end test suite in TypeScript for the university SQA assignment.
+This repository contains Playwright end-to-end automation in TypeScript for a university SQA assignment.
 
-## What is included
+## Scope
 
-- `resize.spec.ts` with three tests:
-  - core app load check
-  - resize via input fields
-  - resize via drag handle
-- `playwright.config.ts` configured to look for tests in the project root and run Chromium by default
-- `tsconfig.json` for basic TypeScript support
-- `screenshots/` for test output images
+- Feature-level validation for the Resize workflow
+- Whole-system navigation smoke coverage across key tools
+- Strict exclusion of any Transliteration-related interaction
+
+## Test Suites
+
+- `resize.spec.ts`
+  - Verify resize tool loads
+  - Upload and resize via numeric inputs
+  - Verify Keep Aspect Ratio behavior
+- `whole_system.spec.ts`
+  - Functional crop flow (`To WebP`)
+  - System-wide smoke navigation across selected tool cards
 
 ## Prerequisites
 
-- Node.js installed
-- npm installed
+- Node.js
+- npm
 
-## Install and run
+## Setup
 
-From the project root, run:
+From the project root:
 
 ```bash
 npm install
 npx playwright install chromium
+```
+
+## Run Tests
+
+Run Resize suite:
+
+```bash
 npx playwright test resize.spec.ts --project=chromium
 ```
 
-## Notes
+Run Whole-System suite:
 
-- The selectors in `resize.spec.ts` are placeholders and should be updated after inspecting the live DOM of https://www.pixelssuite.com/.
-- Do not test or interact with any Transliteration-related feature.
-- Screenshot files will be written into the `screenshots/` folder.
+```bash
+npx playwright test whole_system.spec.ts --project=chromium
+```
 
-## Project files
+Run all tests:
+
+```bash
+npx playwright test --project=chromium
+```
+
+## View HTML Report
+
+```bash
+npx playwright show-report
+```
+
+## Screenshots
+
+Screenshots are saved under `screenshots/`, including:
+
+- `01_app_load.png`
+- `02_resize_inputs.png`
+- `03_aspect_ratio.png`
+- `04_crop_feature.png`
+- `05_system_navigation.png`
+
+## Important Notes
+
+- `test-image.jpg` must exist in the workspace root for upload-based tests.
+- Navigation in this app is SPA-driven; tests intentionally use tool-card interactions for reliable state transitions.
+- Transliteration is explicitly excluded from test coverage.
+
+## Key Files
 
 - `package.json`
 - `playwright.config.ts`
-- `resize.spec.ts`
 - `tsconfig.json`
+- `resize.spec.ts`
+- `whole_system.spec.ts`
+- `TEST_UPDATE_SEQUENCE.md`
