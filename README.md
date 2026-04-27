@@ -17,6 +17,18 @@ This repository contains Playwright end-to-end automation in TypeScript for a un
 - `whole_system.spec.ts`
   - Functional crop flow (`To WebP`)
   - System-wide smoke navigation across selected tool cards
+- `compress_image.spec.ts`
+  - Compress page load and upload flow
+  - Invalid file upload safety check
+  - Mobile + navigation checks
+- `convert_image.spec.ts`
+  - Coverage for JPG/PNG/WebP converter pages
+  - Upload validations + negative file-type check
+  - Mobile + navigation checks
+- `crop_image.spec.ts`
+  - Coverage for crop JPG/PNG/WebP pages
+  - Upload validations + negative file-type check
+  - Mobile + navigation checks
 
 ## Prerequisites
 
@@ -52,6 +64,12 @@ Run all tests:
 npx playwright test --project=chromium
 ```
 
+Run all tests in headed mode:
+
+```bash
+npm run test:e2e:headed
+```
+
 ## View HTML Report
 
 ```bash
@@ -61,7 +79,6 @@ npx playwright show-report
 ## Screenshots
 
 Screenshots are saved under `screenshots/`, including:
-## Screenshots
 
 See [SCREENSHOT_CATALOG.md](SCREENSHOT_CATALOG.md) for a screenshot-by-screenshot description.
 
@@ -76,6 +93,12 @@ Whole-system suite:
 - `screenshots/whole-system/01_crop_feature.png`
 - `screenshots/whole-system/02_system_navigation.png`
 
+Additional suites (failure artifacts and traces are stored by Playwright config):
+
+- `compress_image.spec.ts` stores success screenshots in `screenshots/compress/`
+- `convert_image.spec.ts` stores success screenshots in `screenshots/convert/`
+- `crop_image.spec.ts` stores success screenshots in `screenshots/crop/`
+
 ## Important Notes
 
 - `test-image.jpg` must exist in the workspace root for upload-based tests.
@@ -89,4 +112,7 @@ Whole-system suite:
 - `tsconfig.json`
 - `resize.spec.ts`
 - `whole_system.spec.ts`
+- `compress_image.spec.ts`
+- `convert_image.spec.ts`
+- `crop_image.spec.ts`
 - `TEST_UPDATE_SEQUENCE.md`
