@@ -1,0 +1,6 @@
+node_modules/
+.puppeteer-user-data/
+downloads/
+uploads/
+screenshots/
+*.log
