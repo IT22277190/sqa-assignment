@@ -1,0 +1,8 @@
+{
+  "name": "pixelsuite-artifact-service",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Artifact service for screenshots and run outputs.",
+  "main": "index.js",
+  "type": "commonjs"
+}

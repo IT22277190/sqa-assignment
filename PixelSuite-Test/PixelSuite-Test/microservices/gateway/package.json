@@ -1,0 +1,8 @@
+{
+  "name": "pixelsuite-test-gateway",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Orchestrator for PixelSuite-Test microservice-style automation scaffold.",
+  "main": "index.js",
+  "type": "commonjs"
+}

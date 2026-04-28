@@ -1,0 +1,8 @@
+{
+  "name": "pixelsuite-fixture-service",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Fixture service for generated test assets.",
+  "main": "index.js",
+  "type": "commonjs"
+}

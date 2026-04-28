@@ -1,0 +1,8 @@
+{
+  "name": "pixelsuite-result-service",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Result service for pass/fail aggregation.",
+  "main": "index.js",
+  "type": "commonjs"
+}
